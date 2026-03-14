@@ -1,0 +1,49 @@
+<div class="container mt-3">
+
+<h4>Your Cart</h4>
+
+<div class="card p-2 mb-2" *ngFor="let item of cartItems">
+
+<div class="d-flex align-items-center">
+
+<img [src]="item.image" width="70" class="me-3">
+
+<div class="flex-grow-1">
+
+<h6>{{item.food}}</h6>
+<p class="text-muted">{{item.restaurant}}</p>
+
+</div>
+
+<span class="me-3">₹{{item.price}}</span>
+
+<div class="d-flex align-items-center">
+
+<button class="btn btn-sm btn-secondary"
+(click)="cartService.decrease(item)">-</button>
+
+<span class="mx-2">{{item.quantity}}</span>
+
+<button class="btn btn-sm btn-secondary"
+(click)="cartService.increase(item)">+</button>
+
+</div>
+
+<button class="btn btn-danger btn-sm ms-3"
+(click)="cartService.removeItem(item)">
+Remove
+</button>
+
+</div>
+
+</div>
+
+<div class="card p-3 mt-3">
+<h5>Total: ₹{{cartService.getTotal()}}</h5>
+<button class="btn btn-warning w-100 mt-2" routerLink="/order-summary">
+Proceed to Checkout
+</button>
+
+</div>
+
+</div>

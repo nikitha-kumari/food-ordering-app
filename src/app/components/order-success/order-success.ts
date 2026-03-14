@@ -1,0 +1,11 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-order-success',
+  imports: [CommonModule,RouterModule],
+  templateUrl: './order-success.html',
+  styleUrl: './order-success.css',
+})
+export class OrderSuccess {}

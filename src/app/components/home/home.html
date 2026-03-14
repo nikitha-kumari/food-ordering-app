@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-between align-items-center p-3">
+  <h5>Food Delivery</h5>
+  <i class="bi bi-person-circle"></i>
+</div>
+
+<div class="container mb-3">
+
+<input
+type="text"
+class="form-control"
+placeholder="Search food or restaurant"
+[(ngModel)]="searchText">
+
+</div>
+
+<div class="container mt-3">
+
+  <div class="row">
+
+    <div class="col-md-4 col-6 mb-3"  *ngFor="let item of filteredFoods()">
+
+      <div class="card food-card shadow-sm">
+
+        <div class="image-container">
+
+          <img [src]="item.image"
+               class="card-img-top food-img"
+               alt="food">
+
+          <!-- Veg / Non-Veg Icon -->
+          <span *ngIf="item.type === 'veg'" class="veg-icon"></span>
+          <span *ngIf="item.type === 'nonveg'" class="nonveg-icon"></span>
+
+        </div>
+
+        <div class="card-body">
+
+          <h6 class="card-title mb-1">{{item.food}}</h6>
+
+          <p class="restaurant-name">
+            {{item.restaurant}}
+          </p>
+
+          <div class="d-flex justify-content-between align-items-center">
+
+            <span class="price">₹{{item.price}}</span>
+
+           <button
+class="btn btn-sm"
+[ngClass]="item.added ? 'btn-success' : 'btn-warning'"
+(click)="addToCart(item)">
+
+{{ item.added ? 'Added' : 'Add' }}
+
+</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<nav class="navbar fixed-bottom bg-light border-top">
+
+  <div class="container d-flex justify-content-around">
+
+    <span>🏠 Home</span>
+    <span>🔍 Search</span>
+    <span class="position-relative" routerLink="/cart">
+
+<span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+ 🛒 {{cartService.getItems().length}}
+</span>
+
+</span>
+    <span>👤 Profile</span>
+
+  </div>
+
+</nav>
