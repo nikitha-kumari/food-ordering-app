@@ -16,13 +16,40 @@ export class Signup {
             user = {
   name: '',
   email: '',
-  password: ''
+  password: '',
+  phone:''
 };
   signup(){
 
+  if(!this.user.name || !this.user.email || !this.user.password){
+    alert("Please fill all fields");
+    return;
+  }
+ 
+  
+   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if(!emailPattern.test(this.user.email)){
+    alert("Enter a valid email");
+    return;
+  }
+
+  if(this.user.password.length < 6){
+    alert("Password must be at least 6 characters");
+    return;
+  }
+  if(this.user.phone.length>10)
+  {
+    alert("Phone number must have 10 digits");
+    return;
+  }
+   else{
+    alert("Account is created!!!");
+  }
   localStorage.setItem('user', JSON.stringify(this.user));
 
   //this.router.navigate(['/home']);
 
 }
+
 }

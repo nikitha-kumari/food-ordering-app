@@ -27,6 +27,10 @@ export class Address {
   saveAddress(){
 
     // store in service
+    if(!this.address.city || !this.address.pincode || !this.address.street)
+    {
+      alert("Please Enter the city,pincode and street");
+    }
     this.userService.setAddress(this.address);
 
     // store in localStorage (so profile page can read it)
