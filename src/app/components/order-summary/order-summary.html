@@ -1,28 +1,57 @@
 <div class="container mt-3">
 
-<h4>Order Summary</h4>
+<h5 class="mb-3">Order details</h5>
 
-<div class="card p-2 mb-2" *ngFor="let item of cartService.getItems()">
+<div class="card p-3">
 
+<!-- Order Items -->
+<div *ngFor="let item of cartService.getItems()" 
+     class="d-flex align-items-center mb-3">
+
+<img 
+[src]="item.image"
+width="60"
+height="60"
+class="rounded me-3"
+style="object-fit:cover">
+
+<div class="flex-grow-1">
+
+<h6 class="mb-0">{{item.food}}</h6>
+
+<small class="text-muted">
+{{item.price}} × {{item.quantity}}
+</small>
+
+</div>
+
+<div>
+₹{{item.price * item.quantity}}
+</div>
+
+</div>
+
+<hr>
+
+<!-- Subtotal -->
 <div class="d-flex justify-content-between">
-
-<div>
-<h6>{{item.food}}</h6>
-<p>{{item.restaurant}}</p>
+<span>Sub total:</span>
+<span>₹{{cartService.getTotal()}}</span>
 </div>
 
-<div>
-₹{{item.price}} × {{item.quantity}}
+<!-- Delivery Fee -->
+<div class="d-flex justify-content-between">
+<span>Delivery fee:</span>
+<span>₹100</span>
 </div>
 
+<hr>
+
+<!-- Total -->
+<div class="d-flex justify-content-between fw-bold">
+<span>Amount payable:</span>
+<span>₹{{cartService.getTotal() + 100}}</span>
 </div>
-
-</div>
-
-<div class="card p-3 mt-3">
-
-<h5>Total: ₹{{cartService.getTotal()}}</h5>
-
 <button class="btn btn-success w-100" routerLink="/address">
 Proceed to Payment
 </button>

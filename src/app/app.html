@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<nav *ngIf="currentRoute !== '/login' && currentRoute !== '/signup'"
+<nav *ngIf=" currentRoute!=='/' && currentRoute !== '/login' && currentRoute !== '/signup'"
 class="navbar fixed-bottom bg-light border-top">
 
   <div class="container d-flex justify-content-around">
