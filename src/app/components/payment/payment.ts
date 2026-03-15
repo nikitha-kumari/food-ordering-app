@@ -16,7 +16,21 @@ export class Payment{
               private router: Router) {}
 
   placeOrder(){
-    this.router.navigate(['/order-success']);
-  }
+
+  const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+
+  orders.push({
+    items: this.cartService.getItems(),
+    total: this.cartService.getTotal(),
+    date: new Date()
+  });
+
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  this.cartService.clearCart();
+
+  this.router.navigate(['/order-success']);
+
+}
 
 }

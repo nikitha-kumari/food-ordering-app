@@ -1,1 +1,24 @@
 <router-outlet></router-outlet>
+
+<nav *ngIf="currentRoute !== '/login' && currentRoute !== '/signup'"
+class="navbar fixed-bottom bg-light border-top">
+
+  <div class="container d-flex justify-content-around">
+
+    <a routerLink="/home">🏠 Home</a>
+
+    <a routerLink="/cart" class="position-relative">
+
+      🛒
+
+      <span class="badge bg-danger position-absolute top-0 start-100 translate-middle">
+        {{cartService.getItems().length}}
+      </span>
+
+    </a>
+
+    <a routerLink="/profile">👤 Profile</a>
+
+  </div>
+
+</nav>

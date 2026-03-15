@@ -7,19 +7,24 @@
 <input
 type="text"
 class="form-control mb-3"
-placeholder="Full Name">
+placeholder="Full Name"
+[(ngModel)]="user.name">
 
 <input
 type="email"
 class="form-control mb-3"
-placeholder="Email">
+placeholder="Email"
+[(ngModel)]="user.email">
 
 <input
 type="password"
 class="form-control mb-3"
-placeholder="Password">
+placeholder="Password"
+[(ngModel)]="user.password">
 
-<button class="btn btn-warning w-100 mb-3">
+<button
+class="btn btn-warning w-100 mb-3"
+(click)="signup()">
 Create Account
 </button>
 

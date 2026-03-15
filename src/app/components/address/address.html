@@ -4,17 +4,37 @@
 
 <div class="card p-3 mt-3">
 
-<input class="form-control mb-3" placeholder="Full Name" required>
+<input
+class="form-control mb-3"
+placeholder="Full Name"
+required>
 
-<input class="form-control mb-3" placeholder="Mobile Number" required>
+<input
+class="form-control mb-3"
+placeholder="Mobile Number"
+required>
 
-<input class="form-control mb-3" placeholder="Street Address" required>
+<input
+class="form-control mb-3"
+placeholder="Street Address"
+[(ngModel)]="address.street"
+required>
 
-<input class="form-control mb-3" placeholder="City" required>
+<input
+class="form-control mb-3"
+placeholder="City"
+[(ngModel)]="address.city"
+required>
 
-<input class="form-control mb-3" placeholder="Pincode" required>
+<input
+class="form-control mb-3"
+placeholder="Pincode"
+[(ngModel)]="address.pincode"
+required>
 
-<button class="btn btn-warning w-100" routerLink="/payment">
+<button
+class="btn btn-warning w-100"
+(click)="saveAddress()">
 Continue to Payment
 </button>
 

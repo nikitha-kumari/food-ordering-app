@@ -9,6 +9,8 @@ import { OrderSummary } from './components/order-summary/order-summary';
 import { Address } from './components/address/address';
 import { Payment } from './components/payment/payment';
 import { OrderSuccess } from './components/order-success/order-success';
+import { Profile } from './components/profile/profile';
+
 export const routes: Routes = [
   { path: '', component: Splash },
   { path: 'login', component: Login },
@@ -18,5 +20,8 @@ export const routes: Routes = [
   {path:'order-summary',component:OrderSummary},
   {path:'address',component:Address},
   {path:'payment',component:Payment},
-  {path:'order-success',component:OrderSuccess}
+  {path:'order-success',component:OrderSuccess},
+  {path:'profile',component:Profile},
+  
+
 ];

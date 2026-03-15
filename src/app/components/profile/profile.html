@@ -1,0 +1,115 @@
+<div class="container mt-4 profile-wrapper">
+
+  <div class="row">
+
+    <!-- Sidebar -->
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+
+        <div class="profile-header text-center mb-3">
+          <div class="avatar">👤</div>
+          <h6 class="mt-2">{{user.name || 'User'}}</h6>
+        </div>
+
+        <div class="list-group">
+
+          <button
+            class="list-group-item list-group-item-action"
+            [class.active]="section === 'info'"
+            (click)="selectSection('info')">
+            👤 My Info
+          </button>
+
+          <button
+            class="list-group-item list-group-item-action"
+            [class.active]="section === 'orders'"
+            (click)="selectSection('orders')">
+            📦 My Orders
+          </button>
+
+          <button
+            class="list-group-item list-group-item-action"
+            [class.active]="section === 'address'"
+            (click)="selectSection('address')">
+            📍 Saved Address
+          </button>
+
+          <button
+            class="list-group-item list-group-item-action text-danger"
+            (click)="logout()">
+            🚪 Logout
+          </button>
+          <button class="btn btn-outline-secondary mb-3" routerLink="/home">
+← Back to Home
+</button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="col-md-9">
+
+      <div class="profile-content card p-4">
+
+        <!-- My Info -->
+        <div *ngIf="section === 'info'">
+
+          <h4 class="mb-3">My Information</h4>
+
+          <div class="info-box">
+            <p><b>Name:</b> {{user.name}}</p>
+            <p><b>Email:</b> {{user.email}}</p>
+            <p><b>Phone:</b> {{user.phone}}</p>
+          </div>
+
+        </div>
+
+        <!-- My Orders -->
+        <div *ngIf="section === 'orders'">
+
+          <h4 class="mb-3">My Orders</h4>
+
+          <div *ngIf="orders.length === 0" class="text-muted">
+            No orders placed yet.
+          </div>
+
+          <div *ngFor="let order of orders" class="order-card mb-3">
+
+            <p><b>Order Date:</b> {{order.date | date}}</p>
+
+            <div *ngFor="let item of order.items">
+              {{item.food}} × {{item.quantity}} — ₹{{item.price}}
+            </div>
+
+            <p class="mt-2"><b>Total:</b> ₹{{order.total}}</p>
+
+          </div>
+
+        </div>
+
+        <!-- Saved Address -->
+        <div *ngIf="section === 'address'">
+
+          <h4 class="mb-3">Saved Address</h4>
+
+          <div *ngIf="!address.street" class="text-muted">
+            No address saved.
+          </div>
+
+          <div class="address-box" *ngIf="address.street">
+            <p>{{address.street}}</p>
+            <p>{{address.city}}</p>
+            <p>{{address.pincode}}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
